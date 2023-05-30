@@ -64,6 +64,8 @@ function playerSelection (){
         return "scissors"
     } else {
         console.log("Please input something else")  //add: code that makes this function repeat itself
+        playerSelection();
+        return;
     }
 }
 
@@ -79,26 +81,45 @@ function playRound (playerSelection, getComputerChoice){ // everything below thi
         results;
     } else if (player == 'rock' && computer == "scissors" ) {
         console.log("PLAYER WINS! SCISSORS>ROCK!")
+        results;
     } else if (player == 'paper' && computer == "scissors" ) {
         console.log("COMP WINS! SCISSORS>PAPER")
         results;
     } else if (player == 'paper' && computer == "rock" ) {
         console.log("PLAYER WINS! PAPER>ROCK!")
+        results;
     } else if (player == 'scissors' && computer == "rock" ) {
         console.log("COMP WINS! ROCK>SCISSORS!")
         results;
     } else if (player == 'scissors' && computer == "paper" ) {
         console.log("PLAYER WINS! SCISSORS>PAPER!")
+        results;
     } else {
-        console.log('try inputting -rock-, -paper- or -scissors-. That may help?')
+        console.log('ERROR: try inputting -rock-, -paper- or -scissors-. That may help?')
     }
 
 }
 
+function game(){
+    playerSelection();
+    getComputerChoice();
+    playRound();
 
-playerSelection();
-getComputerChoice();
-playRound();
+}
+
+function repeatGame(){
+    
+    for (i=0; i<5; i++) {
+        console.log(`\n ROUND ${i+1}`)
+        game();
+    }
+
+}
+
+//playerSelection();
+//getComputerChoice();
+//playRound();
+repeatGame();
 
 
 
