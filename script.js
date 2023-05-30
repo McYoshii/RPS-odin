@@ -1,6 +1,7 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
-
+//add "recordResults" function that tallies everything up.
+let recordResults; //a placeholder for the above comment
 function getComputerChoice (){
     value = Math.floor(Math.random()*3)+1; //makes random computer selection
 
@@ -95,7 +96,7 @@ function playRound (playerSelection, getComputerChoice){ // everything below thi
         console.log("PLAYER WINS! SCISSORS>PAPER!")
         results;
     } else {
-        console.log('ERROR: try inputting -rock-, -paper- or -scissors-. That may help?')
+        console.log('ERROR: try inputting -rock-, -paper- or -scissors- instead.')
     }
 
 }
@@ -109,9 +110,15 @@ function game(){
 
 function repeatGame(){
     
-    for (i=0; i<5; i++) {
+    for (i=0; i<5; i++) { //loops function logic 5 times
         console.log(`\n ROUND ${i+1}`)
         game();
+    }
+
+}
+
+function recordResults(){
+  
     }
 
 }
@@ -120,6 +127,7 @@ function repeatGame(){
 //getComputerChoice();
 //playRound();
 repeatGame();
+
 
 
 
