@@ -1,13 +1,11 @@
-
-let computer;
-let player;
+let computer; //Empty variable that is to be overridden
+let player;   //Empty variable that is to be overridden
 
 function getComputerChoice (){
-    //my_arr = ["Rock", "Paper", "Scissors"];
-    value = Math.floor(Math.random()*3)+1;
+    value = Math.floor(Math.random()*3)+1; //makes random computer selection
 
-   // switch (value){
-    //    case 1:
+   // switch (value){ //just for my own referrence, that the function could be written this way as well. Wrote using if/else statements for my own practice only
+    //    case 1:     
       //      computer="rock";
         //    break;
         //case 2:
@@ -18,22 +16,23 @@ function getComputerChoice (){
            // break;
     //}
 
-    if (value===1){
-        console.log("rock")
+    if (value===1){ // translates randomly generated number into a respective string
+        //console.log("rock")
         computer="rock"
         return "rock";
         
     } else if (value===2) {
-        console.log("paper")
+        //console.log("paper")
         computer="paper"
-        return "potato"
+        return "paper"
         
     } else if (value===3) {
-        console.log("scissors")
+        //console.log("scissors")
         computer="scissors"
-        return "poop"
+        return "scissors"
     } else {
-        console.log("it brokin :(")
+        console.log("I think it brokin :( ") 
+
     }
 
     console.log(computer)
@@ -46,48 +45,52 @@ function getComputerChoice (){
 
 
 function playerSelection (){
-    let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:")
-    console.log(playerPrompt);
+    let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); //SELF NOTE: .toLowerCase() makes prompt case insensitive
+    //console.log(playerPrompt);
 
-    if (playerPrompt==="rock"){
-        console.log("rock")
+    if (playerPrompt==="rock"){ //this assigns relevant variable to unassigned "player" variable
+        //console.log("rock")
         player="rock"
         return "rock";
         
     } else if (playerPrompt==="paper") {
-        console.log("paper")
+        //console.log("paper")
         player="paper"
         return "paper"
         
     } else if (playerPrompt==="scissors") {
-        console.log("scissors")
+        //console.log("scissors")
         player="scissors"
         return "scissors"
     } else {
-        console.log("it brokin :(")
+        console.log("Please input something else")  //add: code that makes this function repeat itself
     }
 }
 
 
 
-///build below function!
-function playRound (playerSelection, getComputerChoice){
-    if (player===computer){
+
+function playRound (playerSelection, getComputerChoice){ // everything below this is responsible for the games overall functionality
+    let results = console.log('Results:\n\n PLAYER = ', player, "\n COMPUTER = ", computer,);
+    if (player===computer){  
         console.log("TIE!")
     } else if (player == 'rock' && computer == "paper" ) {
         console.log("COMP WINS! PAPER>ROCK!")
+        results;
     } else if (player == 'rock' && computer == "scissors" ) {
         console.log("PLAYER WINS! SCISSORS>ROCK!")
     } else if (player == 'paper' && computer == "scissors" ) {
-        console.log("COMP WINS! SCISSORS>PAPER!")
+        console.log("COMP WINS! SCISSORS>PAPER")
+        results;
     } else if (player == 'paper' && computer == "rock" ) {
         console.log("PLAYER WINS! PAPER>ROCK!")
     } else if (player == 'scissors' && computer == "rock" ) {
         console.log("COMP WINS! ROCK>SCISSORS!")
+        results;
     } else if (player == 'scissors' && computer == "paper" ) {
         console.log("PLAYER WINS! SCISSORS>PAPER!")
     } else {
-        console.log('whoops, this thing might be broken...')
+        console.log('try inputting -rock-, -paper- or -scissors-. That may help?')
     }
 
 }
