@@ -1,7 +1,7 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
 //add "recordResults" function that tallies everything up.
-let recordResults; //a placeholder for the above comment
+let recordResults=0; //a placeholder for the above comment
 function getComputerChoice (){
     value = Math.floor(Math.random()*3)+1; //makes random computer selection
 
@@ -36,7 +36,7 @@ function getComputerChoice (){
 
     }
 
-    console.log(computer)
+    //console.log(computer)
 
 
 
@@ -49,7 +49,7 @@ function playerSelection (){
     let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); //SELF NOTE: .toLowerCase() makes prompt case insensitive
     //console.log(playerPrompt);
 
-    if (playerPrompt==="rock"){ //this assigns relevant variable to unassigned "player" variable
+    if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable
         //console.log("rock")
         player="rock"
         return "rock";
@@ -64,49 +64,64 @@ function playerSelection (){
         player="scissors"
         return "scissors"
     } else {
-        console.log("Please input something else")  //add: code that makes this function repeat itself
+        console.log("Please input something else")  //makes function repeat itself if player puts in a misinput
         playerSelection();
         return;
     }
 }
 
 
-
-
 function playRound (playerSelection, getComputerChoice){ // everything below this is responsible for the games overall functionality
     let results = console.log('Results:\n\n PLAYER = ', player, "\n COMPUTER = ", computer,);
+    //let displayedPlayerScore = console.log(`TOTAL PLAYER SCORE: ${recordResults} POINTS`) //unused function for counter. this variable, as well as everywhere it is called is commented out and will be fixed.
+    
 
     if (player===computer){  
+        recordResults+=0.5
+        results;
         console.log("TIE!")
-        recordResults=+0.5
+        //displayedPlayerScore;
+        
     } else if (player == 'rock' && computer == "paper" ) {
+        results;
         console.log("COMP WINS! PAPER>ROCK!")
-        results;
+        //displayedPlayerScore;
+        
     } else if (player == 'rock' && computer == "scissors" ) {
-        console.log("PLAYER WINS! SCISSORS>ROCK!")
-        recordResults=+1
+        recordResults++
         results;
+        console.log("PLAYER WINS! ROCK>SCISSORS!")
+        //displayedPlayerScore;
+        
     } else if (player == 'paper' && computer == "scissors" ) {
+        results;
         console.log("COMP WINS! SCISSORS>PAPER")
-        results;
+        //displayedPlayerScore;
+
     } else if (player == 'paper' && computer == "rock" ) {
+        recordResults++
+        results;
         console.log("PLAYER WINS! PAPER>ROCK!")
-        recordResults=+1
-        results;
+        //displayedPlayerScore;
+        
     } else if (player == 'scissors' && computer == "rock" ) {
+        results;
         console.log("COMP WINS! ROCK>SCISSORS!")
-        results;
+        //displayedPlayerScore;
+        
     } else if (player == 'scissors' && computer == "paper" ) {
-        console.log("PLAYER WINS! SCISSORS>PAPER!")
-        recordResults=+1
+        recordResults++
         results;
+        console.log("PLAYER WINS! SCISSORS>PAPER!")
+        //displayedPlayerScore;
+        
     } else {
-        console.log('ERROR: try inputting -rock-, -paper- or -scissors- instead.')
+        console.log(`ERROR: try inputting 'rock', 'paper' or 'scissors' instead.`)
     }
 
 }
 
-function game(){
+function game(){ //calls all of the above functions within one function. more for convenience more than anything else.
     playerSelection();
     getComputerChoice();
     playRound();
@@ -115,7 +130,7 @@ function game(){
 
 function repeatGame(){
     
-    for (i=0; i<5; i++) { //loops function logic 5 times
+    for (i=0; i<5; i++) { //loops function logic 5 times over.
         console.log(`\n ROUND ${i+1}`)
         game();
     }
@@ -124,31 +139,26 @@ function repeatGame(){
 
 function resultsTally(){
     
-    if(recordResults==2.5){
-        console.log(`Computer Score: ${recordResults}`)
-        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
+    if(recordResults===2.5){
+        console.log(`Player Score: ${recordResults}`)
+        console.log(`Computer Score: ${5-recordResults}`) 
         console.log("\nTIE!\n")
     } else if(recordResults>=2.5){
-        console.log(`Computer Score: ${recordResults}`)
-        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
-        console.log("\nCOMPUTER WINS!\n")
-    } else if (recordResults<=2.5){
-        console.log(`Computer Score: ${recordResults}`)
-        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
+        console.log(`Player Score: ${recordResults}`)
+        console.log(`Computer Score: ${5-recordResults}`) 
         console.log("\nPLAYER WINS!\n")
+    } else if (recordResults<=2.5){
+        console.log(`Player Score: ${recordResults}`)
+        console.log(`Computer Score: ${5-recordResults}`) 
+        console.log("\nCOMPUTER WINS!\n")
     } else {
-        console.log("Whoops, i think it it might be broken?")
+        console.log("Whoops, I think it it might be broken?")
     }
 
   
   
 }
 
-
-
-//playerSelection();
-//getComputerChoice();
-//playRound();
 repeatGame();
 console.log(recordResults)
 resultsTally();
