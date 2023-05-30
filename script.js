@@ -75,25 +75,30 @@ function playerSelection (){
 
 function playRound (playerSelection, getComputerChoice){ // everything below this is responsible for the games overall functionality
     let results = console.log('Results:\n\n PLAYER = ', player, "\n COMPUTER = ", computer,);
+
     if (player===computer){  
         console.log("TIE!")
+        recordResults=+0.5
     } else if (player == 'rock' && computer == "paper" ) {
         console.log("COMP WINS! PAPER>ROCK!")
         results;
     } else if (player == 'rock' && computer == "scissors" ) {
         console.log("PLAYER WINS! SCISSORS>ROCK!")
+        recordResults=+1
         results;
     } else if (player == 'paper' && computer == "scissors" ) {
         console.log("COMP WINS! SCISSORS>PAPER")
         results;
     } else if (player == 'paper' && computer == "rock" ) {
         console.log("PLAYER WINS! PAPER>ROCK!")
+        recordResults=+1
         results;
     } else if (player == 'scissors' && computer == "rock" ) {
         console.log("COMP WINS! ROCK>SCISSORS!")
         results;
     } else if (player == 'scissors' && computer == "paper" ) {
         console.log("PLAYER WINS! SCISSORS>PAPER!")
+        recordResults=+1
         results;
     } else {
         console.log('ERROR: try inputting -rock-, -paper- or -scissors- instead.')
@@ -117,16 +122,36 @@ function repeatGame(){
 
 }
 
-function recordResults(){
-  
+function resultsTally(){
+    
+    if(recordResults==2.5){
+        console.log(`Computer Score: ${recordResults}`)
+        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
+        console.log("\nTIE!\n")
+    } else if(recordResults>=2.5){
+        console.log(`Computer Score: ${recordResults}`)
+        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
+        console.log("\nCOMPUTER WINS!\n")
+    } else if (recordResults<=2.5){
+        console.log(`Computer Score: ${recordResults}`)
+        console.log(`Player Score: ${5-recordResults}`) //fix console.log counter
+        console.log("\nPLAYER WINS!\n")
+    } else {
+        console.log("Whoops, i think it it might be broken?")
     }
 
+  
+  
 }
+
+
 
 //playerSelection();
 //getComputerChoice();
 //playRound();
 repeatGame();
+console.log(recordResults)
+resultsTally();
 
 
 
