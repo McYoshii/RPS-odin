@@ -19,17 +19,14 @@ function getComputerChoice (){
     //}
 
     if (value===1){ // translates randomly generated number into a respective string
-        //console.log("rock")
         computer="rock"
         return "rock";
         
     } else if (value===2) {
-        //console.log("paper")
         computer="paper"
         return "paper"
         
     } else if (value===3) {
-        //console.log("scissors")
         computer="scissors"
         return "scissors"
     } else {
@@ -40,21 +37,17 @@ function getComputerChoice (){
 
 
 function playerSelection (){
-    let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); //SELF NOTE: .toLowerCase() makes prompt case insensitive
-    //console.log(playerPrompt);
+    let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); 
 
-    if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable
-        //console.log("rock")
+    if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable.
         player="rock"
         return "rock";
         
     } else if (playerPrompt==="paper") {
-        //console.log("paper")
         player="paper"
         return "paper"
         
     } else if (playerPrompt==="scissors") {
-        //console.log("scissors")
         player="scissors"
         return "scissors"
     } else {
@@ -115,7 +108,7 @@ function playRound (playerSelection, getComputerChoice){ // everything below thi
 
 }
 
-function game(){ //calls all of the above functions within one function. more for convenience more than anything else.
+function game(){ //calls all of the above functions within one function. 
     playerSelection();
     getComputerChoice();
     playRound();
@@ -148,17 +141,9 @@ function resultsTally(){
     } else {
         console.log("Whoops, I think it it might be broken?")
     }
-
-  
   
 }
 
 repeatGame();
-console.log(recordResults)
+console.log(recordResults);
 resultsTally();
-
-
-
-
-
-
