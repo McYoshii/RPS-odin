@@ -1,7 +1,8 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
-//add "recordResults" function that tallies everything up.
-let recordResults=0; //a placeholder for the above comment
+let recordResults = 0;  // represents default score out of 5 matches played
+
+console.log("ROCK, PAPER, SCISSORS! \n\n Info: \n Each time the player wins a match, they will recieve one point added to their final score (out of 5 matches played). A tie will result in half a point recieved, and a loss will result in no points gained. Whoever wins with a score of 2.5 or higher wins. Happy playing! :) ")
 function getComputerChoice (){
     value = Math.floor(Math.random()*3)+1; //makes random computer selection
 
@@ -35,13 +36,6 @@ function getComputerChoice (){
         console.log("I think it brokin :( ") 
 
     }
-
-    //console.log(computer)
-
-
-
-
-    //let item = my_arr[~~value];
 }
 
 
