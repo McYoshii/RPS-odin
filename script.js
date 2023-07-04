@@ -37,25 +37,62 @@ function getComputerChoice (){
 
 
 function playerSelection (){
-    let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); 
+    //let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); 
 
-    if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable.
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const rockButton = document.getElementById("rockHTML");
+        const paperButton = document.getElementById("paperHTML");
+        const scissorsButton = document.getElementById("scissorsHTML");
+        
+      
+        // ✅ Works as expected
+        rockButton.addEventListener('click', () => {
+        console.log('btn clicked');
         player="rock"
         return "rock";
-        
-    } else if (playerPrompt==="paper") {
+        });
+
+        paperButton.addEventListener('click', () => {
+        console.log('btn clicked');
         player="paper"
-        return "paper"
-        
-    } else if (playerPrompt==="scissors") {
+        return "paper";
+        });
+
+        scissorsButton.addEventListener('click', () => {
+        console.log('btn clicked');
         player="scissors"
-        return "scissors"
-    } else {
-        console.log("Please input something else")  //makes function repeat itself if player puts in a misinput
-        playerSelection();
-        return;
-    }
-}
+        return "scissors";
+        });
+
+    });
+      
+    
+    
+    
+}; 
+    
+    
+
+    //let playerPrompt;
+
+    //if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable.
+      //  player="rock"
+       // return "rock";
+        
+    //} //else if (playerPrompt==="paper") {
+      //  player="paper"
+       // return "paper"
+        
+  //  } else if (playerPrompt==="scissors") {
+    //    player="scissors"
+      //  return "scissors"
+ //   } else {
+   //     console.log("Please input something else")  //makes function repeat itself if player puts in a misinput
+        //playerSelection();
+     //   return;
+ //   }
+
 
 
 function playRound (playerSelection, getComputerChoice){ // everything below this is responsible for the games overall functionality
@@ -115,13 +152,41 @@ function game(){ //calls all of the above functions within one function.
 
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+        const rockButton = document.getElementById("rockHTML");
+        const paperButton = document.getElementById("paperHTML");
+        const scissorsButton = document.getElementById("scissorsHTML");
+        
+      
+        // ✅ Works as expected
+        rockButton.addEventListener('click', () => {
+        console.log('btn clicked');
+        player="rock"
+        return "rock";
+        });
+
+        paperButton.addEventListener('click', () => {
+        console.log('btn clicked');
+        player="paper"
+        return "paper";
+        });
+
+        scissorsButton.addEventListener('click', () => {
+        console.log('btn clicked');
+        player="scissors"
+        return "scissors";
+        });
+
+    });
+
 function repeatGame(){
-    
+
     for (i=0; i<5; i++) { //loops function logic 5 times over.
+        
+        
         console.log(`\n ROUND ${i+1}`)
         game();
     }
-
 }
 
 function resultsTally(){
@@ -143,6 +208,9 @@ function resultsTally(){
     }
   
 }
+
+
+
 
 repeatGame();
 console.log(recordResults);
