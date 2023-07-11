@@ -1,76 +1,43 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
-let recordResults = 0;  // represents default score out of 5 matches played
+let result;  
 
-console.log("ROCK, PAPER, SCISSORS! \n\n Info: \n Each time the player wins a match, they will recieve one point added to their final score (out of 5 matches played). A tie will result in half a point recieved, and a loss will result in no points gained. Whoever wins with a score of 2.5 or higher wins. Happy playing! :) ")
+
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+const choiceBtns= document.querySelectorAll(".choiceBtn");
+
+
+choiceBtns.forEach(button => button.addEventListener('click', () => {
+
+    player = button.textContent; 
+    getComputerChoice();
+
+    playerText.textContent = `Player: ${player}`;
+    computerText.textContent = `Computer: ${computer}`;
+    resultText.textContent = checkWinner();
+
+}));
+
 function getComputerChoice (){
-    value = Math.floor(Math.random()*3)+1; //makes random computer selection
+     const value = Math.floor(Math.random()*3)+1; //makes random computer selection
 
-   // switch (value){ //just for my own referrence, that the function could be written this way as well. Wrote using if/else statements for my own practice only
-    //    case 1:     
-      //      computer="rock";
-        //    break;
-        //case 2:
-          //  computer="paper";
-            //break;   
-       // case 3:
-         //   computer="scissors";
-           // break;
-    //}
 
     if (value===1){ // translates randomly generated number into a respective string
         computer="rock"
-        return "rock";
         
     } else if (value===2) {
         computer="paper"
-        return "paper"
         
     } else if (value===3) {
         computer="scissors"
-        return "scissors"
     } else {
         console.log("I think it brokin :( ") 
 
     }
 }
 
-
-function playerSelection (){
-    //let playerPrompt = prompt("Please type -Rock-, -Paper-, or -Scissors-:").toLowerCase(); 
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const rockButton = document.getElementById("rockHTML");
-        const paperButton = document.getElementById("paperHTML");
-        const scissorsButton = document.getElementById("scissorsHTML");
-        
-      
-        // ✅ Works as expected
-        rockButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="rock"
-        return "rock";
-        });
-
-        paperButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="paper"
-        return "paper";
-        });
-
-        scissorsButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="scissors"
-        return "scissors";
-        });
-
-    });
-      
-    
-    
-    
-}; 
     
     
 
@@ -95,48 +62,38 @@ function playerSelection (){
 
 
 
-function playRound (playerSelection, getComputerChoice){ // everything below this is responsible for the games overall functionality
+function checkWinner (){ // everything below this is responsible for the games overall functionality
     let results = console.log('Results:\n\n PLAYER = ', player, "\n COMPUTER = ", computer,);
     //let displayedPlayerScore = console.log(`TOTAL PLAYER SCORE: ${recordResults} POINTS`) //unused function for counter. this variable, as well as everywhere it is called is commented out and will be fixed.
     
 
-    if (player===computer){  
+    if (player == computer){  
         recordResults+=0.5
-        results;
-        console.log("TIE!")
+        return "Tie!"
         //displayedPlayerScore;
         
     } else if (player == 'rock' && computer == "paper" ) {
-        results;
-        console.log("COMP WINS! PAPER>ROCK!")
+        return "COMP WINS! PAPER>ROCK!"
         //displayedPlayerScore;
         
     } else if (player == 'rock' && computer == "scissors" ) {
-        recordResults++
-        results;
-        console.log("PLAYER WINS! ROCK>SCISSORS!")
+        return "PLAYER WINS! ROCK>SCISSORS!"
         //displayedPlayerScore;
         
     } else if (player == 'paper' && computer == "scissors" ) {
-        results;
-        console.log("COMP WINS! SCISSORS>PAPER")
+        return "COMP WINS! SCISSORS>PAPER"
         //displayedPlayerScore;
 
     } else if (player == 'paper' && computer == "rock" ) {
-        recordResults++
-        results;
-        console.log("PLAYER WINS! PAPER>ROCK!")
+        return "PLAYER WINS! PAPER>ROCK!"
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "rock" ) {
-        results;
-        console.log("COMP WINS! ROCK>SCISSORS!")
+        return "COMP WINS! ROCK>SCISSORS!"
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "paper" ) {
-        recordResults++
-        results;
-        console.log("PLAYER WINS! SCISSORS>PAPER!")
+        return "PLAYER WINS! SCISSORS>PAPER!"
         //displayedPlayerScore;
         
     } else {
@@ -152,40 +109,25 @@ function game(){ //calls all of the above functions within one function.
 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-        const rockButton = document.getElementById("rockHTML");
-        const paperButton = document.getElementById("paperHTML");
-        const scissorsButton = document.getElementById("scissorsHTML");
-        
-      
-        // ✅ Works as expected
-        rockButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="rock"
-        return "rock";
-        });
 
-        paperButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="paper"
-        return "paper";
-        });
 
-        scissorsButton.addEventListener('click', () => {
-        console.log('btn clicked');
-        player="scissors"
-        return "scissors";
-        });
-
-    });
 
 function repeatGame(){
 
     for (i=0; i<5; i++) { //loops function logic 5 times over.
         
+        //const btnClick = document.getElementsByClassName("choiceBtn");
         
+      
+        // ✅ Works as expected
+        btnClick.addEventListener('click', () => {
+        console.log('btn clicked');
+
         console.log(`\n ROUND ${i+1}`)
         game();
+        
+        });
+        
     }
 }
 
@@ -209,9 +151,3 @@ function resultsTally(){
   
 }
 
-
-
-
-repeatGame();
-console.log(recordResults);
-resultsTally();
