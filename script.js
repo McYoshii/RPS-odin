@@ -67,8 +67,7 @@ function checkWinner (){ // everything below this is responsible for the games o
     //let displayedPlayerScore = console.log(`TOTAL PLAYER SCORE: ${recordResults} POINTS`) //unused function for counter. this variable, as well as everywhere it is called is commented out and will be fixed.
     
 
-    if (player == computer){  
-        recordResults+=0.5
+    if (player === computer){  
         return "Tie!"
         //displayedPlayerScore;
         
