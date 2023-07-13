@@ -1,11 +1,16 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
 let result;  
+let round = 0;
+
 
 
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
+const roundsText = document.querySelector("#roundsText");
+const winText = document.querySelector("#winText");
+
 const choiceBtns= document.querySelectorAll(".choiceBtn");
 
 
@@ -17,6 +22,9 @@ choiceBtns.forEach(button => button.addEventListener('click', () => {
     playerText.textContent = `Player: ${player}`;
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = checkWinner();
+    roundsText.textContent = `Round ${round+=1}`;
+    winText.textContent = ""
+    
 
 }));
 
@@ -99,36 +107,24 @@ function checkWinner (){ // everything below this is responsible for the games o
         console.log(`ERROR: try inputting 'rock', 'paper' or 'scissors' instead.`)
     }
 
-}
-
-function game(){ //calls all of the above functions within one function. 
-    playerSelection();
-    getComputerChoice();
-    playRound();
 
 }
-
-
 
 
 function repeatGame(){
 
+    if (round==5){ //TO BE CONTINUED: COUNT EACH ROUND UNTIL ROUND = 5!
+        window.stop();
+}
+
+    
     for (i=0; i<5; i++) { //loops function logic 5 times over.
         
-        //const btnClick = document.getElementsByClassName("choiceBtn");
-        
-      
-        // ✅ Works as expected
-        btnClick.addEventListener('click', () => {
-        console.log('btn clicked');
-
-        console.log(`\n ROUND ${i+1}`)
-        game();
-        
-        });
-        
     }
+
 }
+
+
 
 function resultsTally(){
     
@@ -149,4 +145,6 @@ function resultsTally(){
     }
   
 }
+
+repeatGame();
 
