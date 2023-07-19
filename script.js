@@ -1,5 +1,7 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
+let computerScore = 0;
+let playerScore = 0;
 let result;  
 let round = 0;
 
@@ -23,10 +25,21 @@ choiceBtns.forEach(button => button.addEventListener('click', () => {
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = checkWinner();
     roundsText.textContent = `Round ${round+=1}`;
-    winText.textContent = ""
+    winText.textContent = resultsTally();
+
+    if (round === 5) {
+            console.log('Task performed!');
+
+            choiceBtns.forEach(button => button.disabled = true);
+            //roundsText.disabled = true;
+            resultText.textContent = "GAME OVER!"
+            //resultsTally();
+     }
     
 
 }));
+
+
 
 function getComputerChoice (){
      const value = Math.floor(Math.random()*3)+1; //makes random computer selection
@@ -80,27 +93,27 @@ function checkWinner (){ // everything below this is responsible for the games o
         //displayedPlayerScore;
         
     } else if (player == 'rock' && computer == "paper" ) {
-        return "COMP WINS! PAPER>ROCK!"
+        return "COMP WINS!"
         //displayedPlayerScore;
         
     } else if (player == 'rock' && computer == "scissors" ) {
-        return "PLAYER WINS! ROCK>SCISSORS!"
+        return "PLAYER WINS!!"
         //displayedPlayerScore;
         
     } else if (player == 'paper' && computer == "scissors" ) {
-        return "COMP WINS! SCISSORS>PAPER"
+        return "COMP WINS!"
         //displayedPlayerScore;
 
     } else if (player == 'paper' && computer == "rock" ) {
-        return "PLAYER WINS! PAPER>ROCK!"
+        return "PLAYER WINS!"
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "rock" ) {
-        return "COMP WINS! ROCK>SCISSORS!"
+        return "COMP WINS!"
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "paper" ) {
-        return "PLAYER WINS! SCISSORS>PAPER!"
+        return "PLAYER WINS!"
         //displayedPlayerScore;
         
     } else {
@@ -111,39 +124,20 @@ function checkWinner (){ // everything below this is responsible for the games o
 }
 
 
-function repeatGame(){
-
-    if (round==5){ //TO BE CONTINUED: COUNT EACH ROUND UNTIL ROUND = 5!
-        window.stop();
-}
-
-    
-    for (i=0; i<5; i++) { //loops function logic 5 times over.
-        
-    }
-
-}
 
 
 
 function resultsTally(){
     
-    if(recordResults===2.5){
-        console.log(`Player Score: ${recordResults}`)
-        console.log(`Computer Score: ${5-recordResults}`) 
-        console.log("\nTIE!\n")
-    } else if(recordResults>=2.5){
-        console.log(`Player Score: ${recordResults}`)
-        console.log(`Computer Score: ${5-recordResults}`) 
-        console.log("\nPLAYER WINS!\n")
-    } else if (recordResults<=2.5){
-        console.log(`Player Score: ${recordResults}`)
-        console.log(`Computer Score: ${5-recordResults}`) 
-        console.log("\nCOMPUTER WINS!\n")
-    } else {
-        console.log("Whoops, I think it it might be broken?")
+    if (checkWinner === "PLAYER WINS"){
+        playerScore++
+        console.log(playerScore);
+    } else if (checkWinner === "COMPUTER WINS!") {
+        computerScore++
+        console.log(computerScore);
     }
-  
+
+
 }
 
 repeatGame();
