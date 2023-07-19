@@ -1,7 +1,7 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
-let computerScore = 0;
-let playerScore = 0;
+//let computerScore = 0; //to be touched upon
+//let playerScore = 0; //to be touched upon
 let result;  
 let round = 0;
 
@@ -31,9 +31,7 @@ choiceBtns.forEach(button => button.addEventListener('click', () => {
             console.log('Task performed!');
 
             choiceBtns.forEach(button => button.disabled = true);
-            //roundsText.disabled = true;
             resultText.textContent = "GAME OVER!"
-            //resultsTally();
      }
     
 
@@ -58,29 +56,6 @@ function getComputerChoice (){
 
     }
 }
-
-    
-    
-
-    //let playerPrompt;
-
-    //if (playerPrompt==="rock"){ //these assign a relevant variable to the current unassigned "player" variable.
-      //  player="rock"
-       // return "rock";
-        
-    //} //else if (playerPrompt==="paper") {
-      //  player="paper"
-       // return "paper"
-        
-  //  } else if (playerPrompt==="scissors") {
-    //    player="scissors"
-      //  return "scissors"
- //   } else {
-   //     console.log("Please input something else")  //makes function repeat itself if player puts in a misinput
-        //playerSelection();
-     //   return;
- //   }
-
 
 
 function checkWinner (){ // everything below this is responsible for the games overall functionality
@@ -140,5 +115,5 @@ function resultsTally(){
 
 }
 
-repeatGame();
+//repeatGame();
 
