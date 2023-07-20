@@ -1,9 +1,9 @@
 let computer; //Empty variable that is to be overridden
 let player;   //Empty variable that is to be overridden
-//let computerScore = 0; //to be touched upon
-//let playerScore = 0; //to be touched upon
+let resultsTally = 0; //to be touched upon
 let result;  
 let round = 0;
+let winAnnounce
 
 
 
@@ -25,13 +25,18 @@ choiceBtns.forEach(button => button.addEventListener('click', () => {
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = checkWinner();
     roundsText.textContent = `Round ${round+=1}`;
-    winText.textContent = resultsTally();
+    winText.textContent = counter();
+
+    console.log(resultsTally);
+    
 
     if (round === 5) {
             console.log('Task performed!');
 
             choiceBtns.forEach(button => button.disabled = true);
-            resultText.textContent = "GAME OVER!"
+            resultText.textContent = winAnnounce;
+            
+           
      }
     
 
@@ -71,7 +76,9 @@ function checkWinner (){ // everything below this is responsible for the games o
         return "COMP WINS!"
         //displayedPlayerScore;
         
+        
     } else if (player == 'rock' && computer == "scissors" ) {
+        resultsTally+=1
         return "PLAYER WINS!!"
         //displayedPlayerScore;
         
@@ -80,7 +87,9 @@ function checkWinner (){ // everything below this is responsible for the games o
         //displayedPlayerScore;
 
     } else if (player == 'paper' && computer == "rock" ) {
+        resultsTally+=1
         return "PLAYER WINS!"
+       
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "rock" ) {
@@ -88,7 +97,9 @@ function checkWinner (){ // everything below this is responsible for the games o
         //displayedPlayerScore;
         
     } else if (player == 'scissors' && computer == "paper" ) {
+        resultsTally+=1
         return "PLAYER WINS!"
+        
         //displayedPlayerScore;
         
     } else {
@@ -102,17 +113,17 @@ function checkWinner (){ // everything below this is responsible for the games o
 
 
 
-function resultsTally(){
-    
-    if (checkWinner === "PLAYER WINS"){
-        playerScore++
-        console.log(playerScore);
-    } else if (checkWinner === "COMPUTER WINS!") {
-        computerScore++
-        console.log(computerScore);
+
+
+function counter() {
+    if (resultsTally>2.5){
+        winAnnounce = "GAME WINNER: PLAYER!"
+        
+    } else if (resultsTally<2.5) {
+        winAnnounce = "GAME WINNER: COMPUTER!"
+    } else {
+        return;
     }
-
-
 }
 
 //repeatGame();

@@ -13,12 +13,18 @@
 .choiceBtn{
     line-height:30px;
     width:150px;
+    align-items: center;
 }
 
 #resultText {
     font-weight: bold;
 }
 
+#playerComp{
+    font-family: sans-serif;
+    padding:10px;
+    text-align:center;
+}
 
 
 
